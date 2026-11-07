@@ -1,28 +1,30 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-roboto",
+  display: "swap",
 });
 
 export const metadata = {
   title: "Business IT Support, Cloud & Security | Global IT",
-  description: "",
+  description:
+    "Global IT supports Australian businesses with managed IT, cybersecurity, cloud, business calling, networking and AI automation. Discuss your requirements.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${roboto.variable} font-sans scroll-smooth`}>
+      <body className="min-h-screen flex flex-col bg-white text-slate-800 antialiased selection:bg-[#43A753] selection:text-white">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
